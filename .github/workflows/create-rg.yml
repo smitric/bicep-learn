@@ -33,7 +33,7 @@ env:
   region: "westeurope"
   releaseBundlePath: "release-bundle"
   functionAppName: "resource-group-provisioner"
-  bicepFilePath: "./main.bicep"
+  bicepFilePath: "./RG.bicep"
   #functionAppPackagePath: "ResourceGroupProvisioner/src"
   #functionAppRoleAddScrip: "ResourceGroupProvisioner/adRoleAssignmentToFunction.ps1"
 
