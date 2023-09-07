@@ -13,15 +13,20 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
+      Mail:
+        description: 'User email'
+        required: true
       RGName:
         description: 'Resource group name'
         required: true
       Pillar:
         description: 'Pillar'
         required: true
-      environment:
-        description: 'Environment to deploy RG'
-        type: environment
+      Usage:
+        description: 'Usage'
+        required: true
+      SPpassword:
+        description: 'Password for Service Principal'
         required: true
 
 env:
@@ -59,6 +64,7 @@ jobs:
           template: ${{ env.bicepFilePath }}
           deploymentMode: Validate
           deploymentName: rg-provisioner-deployment-${{ github.run_number }}
+          parameters: resourceGroupName = ${{ inputs.RGName }} pillar = ${{ inputs.Pillar }} usage = ${{inputs.Usage}} resourceGroupLocation = ${{ env.region }}
 
       - uses: azure/arm-deploy@v1
         name: Run plan

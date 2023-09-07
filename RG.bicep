@@ -1,9 +1,9 @@
 targetScope = 'subscription'
 
-param resourceGroupName string = 'testRG'
-param resourceGroupLocation string = 'westeurope'
-param pillar string = 'M Cloud'
-param usage string = 'Learn'
+param resourceGroupName string
+param resourceGroupLocation string
+param pillar string
+param usage string
 param resourceTags object = {
   Pillar: pillar
   Usage: usage
