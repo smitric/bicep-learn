@@ -8,10 +8,6 @@ on:
         type: string
         description: "App & Service principal name"
         required: true
-      resource_group_name:
-        type: string
-        description: "App & Service principal name"
-        required: true
       repository_name:
         type: string
         description: "Repository name. Leave empty for non-federated environment"
@@ -44,7 +40,7 @@ jobs:
         run: |
           app_client_id=$(az ad app create --display-name ${{ inputs.service_principal_name }} | jq -r '.appId')
 
-          az ad sp create --id $app_client_id --scopes /subscriptions/${{ secrets.AZURE_SUBSCRIPTION }}/resourceGroups/${{ inputs.resource_group_name }}
+          az ad sp create --id $app_client_id
 
           echo "app_client_id=$app_client_id" >> $GITHUB_OUTPUT
 
