@@ -50,7 +50,7 @@ jobs:
           echo "{" > credential.json
           echo "    \"name\": \"${{ inputs.service_principal_name }}-federation\"," >> credential.json
           echo "    \"issuer\": \"https://token.actions.githubusercontent.com\"," >> credential.json
-          echo "    \"subject\": \"repo:DevoteamNL/${{ inputs.repository_name}}:environment:${{ inputs.federation_environment }}\"," >> credential.json
+          echo "    \"subject\": \"repo:smitric/${{ inputs.repository_name}}:environment:${{ inputs.federation_environment }}\"," >> credential.json
           echo "    \"description\": \"Federation with GitHub\"," >> credential.json
           echo "    \"audiences\": [" >> credential.json
           echo "        \"api://AzureADTokenExchange\"" >> credential.json
