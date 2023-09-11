@@ -32,7 +32,7 @@ jobs:
       - uses: azure/login@v1
         name: Run azure login
         with:
-          creds: ${{ secrets.AZURE_RESOURCE_POLICY_CONTRIBUTOR }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           allow-no-subscriptions: true
 
       - name: Create App & Service principal
