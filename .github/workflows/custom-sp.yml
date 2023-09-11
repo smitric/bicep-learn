@@ -36,8 +36,9 @@ jobs:
       - uses: azure/login@v1
         name: Run azure login
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          allow-no-subscriptions: true
+            client-id: ${{ vars.AZURE_CLIENT_ID }}
+            tenant-id: ${{ vars.AZURE_TENANT_ID }}
+            allow-no-subscriptions: true
 
       - name: Create App & Service principal
         id: create-app-sp
