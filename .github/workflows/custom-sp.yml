@@ -18,6 +18,9 @@ on:
       federation_environment:
         type: string
         description: "Federation GitHub environment name. Leave empty for non-federated environment"
+      rg_name:
+        type: string
+        description: "Name of the resource group"
 
 permissions:
   id-token: write
@@ -63,3 +66,9 @@ jobs:
           echo "}" >> credential.json
 
           az ad app federated-credential create --id ${{ steps.create-app-sp.outputs.app_client_id }} --parameters credential.json
+
+      - name: Create role assignment
+        run: |
+          export sp = az ad sp list --display-name "${{ inputs.service_principal_name }}" --query "[].{appId:appId}" --output tsv
+          export rg = az group list --query "[?name=='${{ inputs.rg_name }}'].{id:id}" --output tsv
+          az role assignment create --assignee $sp --role "Owner" --scope $rg
