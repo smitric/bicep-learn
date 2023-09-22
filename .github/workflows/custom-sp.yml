@@ -31,7 +31,7 @@ jobs:
   create-app-sp:
     name: "Create App & Service principal"
     runs-on: ubuntu-latest
-    environment: playground-app-sp-creation-test
+    environment: dev
     steps:
       - name: Azure login
         uses: azure/login@v1
