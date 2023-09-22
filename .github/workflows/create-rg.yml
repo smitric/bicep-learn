@@ -27,7 +27,7 @@ on:
         required: true
       SPpassword:
         description: 'Password for Service Principal'
-        required: true
+        required: false
 
 env:
   region: "westeurope"
