@@ -69,7 +69,7 @@ jobs:
 
       - name: Create role assignment
         run: |
-          export sp=$(az ad sp list --display-name ${{ inputs.service_principal_name }} --query '[].{appId:appId}' --output tsv)
-          export rg=$(az group list --query "[?name=='${{ inputs.rg_name }}'].{id:id}" --output tsv)
+          sp=$(az ad sp list --display-name ${{ inputs.service_principal_name }} --query '[].{appId:appId}' --output tsv)
+          rg=$(az group list --query "[?name=='${{ inputs.rg_name }}'].{id:id}" --output tsv)
           az role assignment create --assignee $sp --role "Owner" --scope $rg
             
