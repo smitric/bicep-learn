@@ -68,8 +68,9 @@ jobs:
           az ad app federated-credential create --id ${{ steps.create-app-sp.outputs.app_client_id }} --parameters credential.json
 
       - name: Create role assignment
+        #run: |
+           #sp=$(az ad sp list --display-name ${{ inputs.service_principal_name }} --query '[].{appId:appId}' --output tsv)
+           #rg=$(az group list --query "[?name=='${{ inputs.rg_name }}'].{id:id}" --output tsv)
+           #az role assignment create --assignee-object-id $sp --role "Owner" --scope $rg
         run: |
-          sp=$(az ad sp list --display-name ${{ inputs.service_principal_name }} --query '[].{appId:appId}' --output tsv)
-          rg=$(az group list --query "[?name=='${{ inputs.rg_name }}'].{id:id}" --output tsv)
-          az role assignment create --assignee $sp --role "Owner" --scope $rg
-            
+          az role assignment create --assignee ${{ inputs.service_principal_name }} --role "Owner" --resource-group ${{ inputs.rg_name }}
